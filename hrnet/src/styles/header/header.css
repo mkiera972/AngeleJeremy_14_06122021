@@ -12,12 +12,13 @@
     color: white;
 }
 
-.navbar-menu{
+
+.navbar-logo,.navbar-menu{
     margin: unset;
     list-style: none;
 }
 
-.navbar-menu li a{
+.navbar-menu li a, .navbar-logo a{
     text-decoration: none;
     color: white;
 }

@@ -1,8 +1,10 @@
-const CreateEmployee = () => {
+import Form from "../../components/Form/Form";
+const CreateEmployee = (props) => {
+    console.log(props)
     return(
-        <main>
-            <div className="container">
-                toto
+        <main id="main" style={{marginLeft:props.style.main}}>
+            <div className="container" >
+                <Form/>
             </div>
         </main>
     )
