@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";   
+import profilImg from '../assets/img/profil.jpeg';
 const Sidebar = (props) => {
     const { setStyle } = props; 
     const closeNav = () => {
@@ -11,11 +12,17 @@ const Sidebar = (props) => {
     return (
         <div id="mySidenav" className="sidenav" style={{width:props.style.mySidenav}}>
             <span href="#" className="closebtn" onClick={closeNav}>&times;</span>
+            <div className="mySidenav-profile">
+                <img class="b-r-10" src={profilImg} alt=""/>
+                <div class="mySidenav-profile-body">
+                    <span>Emay Walter</span>
+                </div>
+            </div>
             <Link className="mySidenav-link" to="/">
                 <i class="fas fa-user-plus"></i>
                 <span>New Employee</span>
             </Link>
-            <Link className="mySidenav-link" to="/">
+            <Link className="mySidenav-link" to="/employee-list">
                 <i class="fas fa-users"></i>
                 <span>Employees List</span>
             </Link>

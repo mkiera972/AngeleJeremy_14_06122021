@@ -18,8 +18,78 @@
     list-style: none;
 }
 
+.navbar-menu{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar-menu li{
+    padding: 6px 10px;
+    margin-right: 5px;
+    display: inline-block;
+    position: relative;
+}
+
+
 .navbar-menu li a, .navbar-logo a{
     text-decoration: none;
     color: white;
 }
 
+.onhover-dropdown {
+    cursor: pointer;
+    position: relative;
+}
+
+.onhover-dropdown:hover{
+    transform: scale(1.09);
+}
+
+.notification-box {
+    position: relative;
+}
+
+.badge{
+    position: absolute;
+    right: -5px;
+    top: -6px;
+    padding: 2px 4px;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: work-Sans,sans-serif;
+}
+
+.badge-pill {
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem;
+}
+
+.badge-secondary {
+    color: #fff;
+    background-color: #32be3f;
+}
+
+.media {
+    display: flex;
+    align-items: center;
+}
+
+.media-body{
+    margin-left: 15px;
+    color: #ffffff;
+}
+
+.profile-media img {
+    width: 35px;
+    height: 35px;
+}
+
+.p-0 {
+    padding: 0!important;
+}
+
+.b-r-10 {
+    border-radius: 10px!important;
+}
