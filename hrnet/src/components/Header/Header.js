@@ -9,7 +9,6 @@ const Header = (props) => {
             mySidenav: "250px",
             main: "250px",
         }));
-        //document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
     }
       
     return(
