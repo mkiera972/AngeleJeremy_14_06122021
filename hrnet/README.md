@@ -7,7 +7,7 @@
 
 ## Dependencies
 - [React](https://reactjs.org): v17.0.2   
-- [datatables-plugin-react](https://www.npmjs.com/package/datatables-plugin-react): v1.8.1    
+- [@mkikets/react-datatable](https://www.npmjs.com/package/@mkikets/react-datatable): v1.5.5    
 - [date-fns](https://www.npmjs.com/package/date-fns): v2.25.0        
 - [moment](https://www.npmjs.com/package/moment): v2.29.1     
 - [prop-types](https://www.npmjs.com/package/prop-types): v15.7.2    
@@ -16,7 +16,7 @@
 - [react-router-dom](https://www.npmjs.com/package/react-router-dom): v5.3.0     
 - [react-scripts](https://www.npmjs.com/package/react-scripts): v4.0.3      
 - [react-select](https://www.npmjs.com/package/react-select): v5.1.0    
-- [rjs-simple-modal](https://www.npmjs.com/package/react-top-modal): v1.0.1   
+- [rjs-simple-modal](https://www.npmjs.com/package/rjs-simple-modal): v1.0.1   
 - [react-redux](https://react-redux.js.org/introduction/getting-started): v0.1.7    
 - [jsdoc](https://www.npmjs.com/package/jsdoc): v3.6.7 
 
