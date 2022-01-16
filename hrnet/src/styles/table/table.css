@@ -48,3 +48,15 @@ th.sortable {
     display: flex;
     flex-wrap: wrap;
 }
+
+.as-react-table{
+    background-color: #ffffff;
+    border: 0.5rem solid darkcyan;
+    border-radius: 1.5625rem;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+th.sortable {
+    color: darkcyan;
+}

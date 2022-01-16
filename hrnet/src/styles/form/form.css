@@ -20,6 +20,7 @@ form .row {
     margin-bottom: 1rem;
 }
 
+
 .col{
     flex-basis: 0;
     flex-grow: 1;
@@ -35,7 +36,7 @@ form .row {
     font-size: 1rem;
     line-height: 1.5;
     color: #495057;
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
@@ -45,6 +46,13 @@ form .row {
 .fieldset1 {
     border: 2px solid green;
     border-radius: 8px;
+    border-radius: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+legend {
+  font-weight: 700;
+  color: darkcyan;
 }
 
 .btn{

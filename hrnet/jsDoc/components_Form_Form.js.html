@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Form/Form.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Form/Form.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from 'react'
+import '../../styles/form/form.css';
+import DatePickerView from '../Date/Date';
+import SelectView from '../Select/Select';
+import { states, dept } from '../../data/data';
+import { addEmploye } from '../../redux/actions/employe';
+import { connect } from "react-redux";
+//import { useNavigate } from 'react-router-dom';
+import {Modal, useModal} from 'rjs-simple-modal';
+import 'rjs-simple-modal/dist/index.css'
+
+/**
+ * @function Form
+ * @param {object} props redux store
+ * @returns jsx form
+ */
+const Form = (props) => {
+    const [formData, setFormData] = useState({
+        firstname: "",
+        lastname: "",
+        dateBirth : "",
+        startDate : "",
+        street : "",
+        city : "",
+        state : "",
+        zipcode : "",
+        Department : "",
+    });
+
+    const [modalData, setModalInfo] = useState({
+        title: "",
+        content: "",
+    });
+
+
+    const { showModal, Toggle } = useModal();
+
+    //const navigate = useNavigate();
+
+    /**
+     * 
+     * @param {event} e event
+     * Set data form on state form 
+     */
+    const onChangeInput = e => {
+        setFormData({...formData, [e.target.id]: e.target.value});
+    }
+    
+    /**
+     * 
+     * @param {event} evt event
+     * Set data form to api
+     * @return true if data successful added or false if error 
+     */
+    const handleSubmit = (evt) => {
+        const { dispatch } = props;
+        evt.preventDefault();
+        dispatch(addEmploye(formData))
+        .then(() => {
+            setModalInfo({
+                title : "Success", 
+                content : "L'employé " + formData.firstname + " " +  formData.lastname + " a bien été enregistré."
+            })
+            Toggle();
+            //navigate("/employee-list");
+        })
+        .catch((error) => {
+            setModalInfo({
+                title : "Error", 
+                content : error
+            })
+            Toggle();
+        })
+    }
+
+    return(
+        &lt;form onSubmit={handleSubmit}>
+            &lt;h1>NEW EMPLOYEE&lt;/h1>
+            &lt;span className="line">&lt;/span>
+            &lt;fieldset className="fieldset1">  
+                &lt;legend>Informations personnelles&lt;/legend>
+                &lt;div className="row">
+                    &lt;div className="col">
+                        &lt;label htmlFor="firstname">First Name&lt;/label>
+                        &lt;input type="text" required className="form-control" id="firstname" onChange={(e) => onChangeInput(e)} placeholder="First name"/>
+                    &lt;/div>
+                    &lt;div className="col">
+                        &lt;label htmlFor="lastname">Last Name&lt;/label>
+                        &lt;input type="text" required className="form-control" id="lastname" onChange={(e) => onChangeInput(e)} placeholder="Last name"/>
+                    &lt;/div>              
+                &lt;/div>
+                &lt;div className="row">
+                    &lt;div className="col">
+                        &lt;label htmlFor="dateBirth">Date of Birth&lt;/label>
+                        &lt;DatePickerView  setNewEmployee={setFormData} id="dateBirth"/>
+                    &lt;/div>
+                    &lt;div className="col">
+                        &lt;label htmlFor="startDate">StartDate&lt;/label>
+                        &lt;DatePickerView  setNewEmployee={setFormData} id="startDate"/>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/fieldset> 
+            &lt;fieldset className="fieldset1">  
+                &lt;legend>Address&lt;/legend>
+                &lt;div className="row">
+                    &lt;div className="col">
+                        &lt;label htmlFor="street">Street&lt;/label>
+                        &lt;input type="text" required className="form-control" id="street" onChange={(e) => onChangeInput(e)} placeholder="Street"/>
+                    &lt;/div>
+                    &lt;div className="col">
+                        &lt;label htmlFor="city">City&lt;/label>
+                        &lt;input type="text" required className="form-control" id="city" onChange={(e) => onChangeInput(e)} placeholder="City"/>
+                    &lt;/div>              
+                &lt;/div>
+                &lt;div className="row">
+                    &lt;div className="col">
+                        &lt;label htmlFor="state">State&lt;/label>
+                        &lt;SelectView id="state" setNewEmployee={setFormData} data={states}/>
+                    &lt;/div>
+                    &lt;div className="col">
+                        &lt;label htmlFor="zipcode">Zip Code&lt;/label>
+                        &lt;input type="number" required className="form-control" id="zipcode" onChange={(e) => onChangeInput(e)} placeholder="Zip Code"/>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/fieldset>  
+            &lt;fieldset className="fieldset1">  
+                &lt;legend>Department&lt;/legend>
+                &lt;div className="row">
+                    &lt;div className="col">
+                        &lt;SelectView id="Department" setNewEmployee={setFormData} data={dept}/>
+                    &lt;/div>            
+                &lt;/div>
+            &lt;/fieldset> 
+            &lt;div className="form-group-center">
+                &lt;button type="submit" className="btn">Save&lt;/button> 
+                &lt;Modal show={showModal} close={Toggle} title={modalData.title}>{modalData.content}&lt;/Modal>
+            &lt;/div>
+        &lt;/form>
+    )
+}
+
+/**
+ * 
+ * @param {object} state get data to store redux
+ * @returns data store
+ */
+function mapStateToProps(state) {
+    const  { message, statusMessage }  = state.message
+    return {
+      message,
+      statusMessage
+    };
+}
+export default connect(mapStateToProps)(Form);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EmployeService.html">EmployeService</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CreateEmployee">CreateEmployee</a></li><li><a href="global.html#DatePickerView">DatePickerView</a></li><li><a href="global.html#Form">Form</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li><li><a href="global.html#openNavsetstatenewstyleproperty">openNav
+set state new style property</a></li><li><a href="global.html#SelectView">SelectView</a></li><li><a href="global.html#Sidebar">Sidebar</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Jan 13 2022 09:48:19 GMT-0400 (heure normale de l’Atlantique)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -2,10 +2,15 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import ReactDatatable from '@mkikets/react-datatable';
 import '../../styles/table/table.css';
-const CurrentEmployee = () => {
+
+/**
+ * @function CreateEmployee
+ * @param {object} props redux store data
+ * @returns data list employee
+ */
+const CurrentEmployee = (props) => {
     const employeReducer = useSelector((state) => state.employeReducer);
     const { employes } = employeReducer;
-    console.log(employes)
     const columns = [
         {
             key: "firstname",
@@ -18,13 +23,18 @@ const CurrentEmployee = () => {
             sortable: true
         },
         {
-            key: "dateBirth",
-            text: "Date Birth",
+            key: "department",
+            text: "Department",
             sortable: true
         },
         {
             key: "startDate",
             text: "Start Date",
+            sortable: true
+        },
+        {
+            key: "dateBirth",
+            text: "Date Birth",
             sortable: true
         },
         {
@@ -39,7 +49,7 @@ const CurrentEmployee = () => {
         },
         {
             key: "state",
-            text: "Postcode",
+            text: "State",
             sortable: true
         },
         {
@@ -61,8 +71,10 @@ const CurrentEmployee = () => {
         }
     }
     return(
-        <main>
-            <div className="container">
+        <main id="main" style={{marginLeft:props.style.main}}>
+            <div className="container" >
+                <h1>CURRENT EMPLOYEE</h1>
+                <span className="line"></span>
                 <ReactDatatable config={config} records={employes} columns={columns}/>
             </div>
         </main>

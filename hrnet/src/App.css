@@ -91,6 +91,13 @@ main{
   align-items: center;
 }
 
+.mySidenav-entete{
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
 .mySidenav-profile {
   padding: 2rem;
@@ -122,6 +129,7 @@ main{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  text-align: center;
 }
 
 .copyrigth-logo{
@@ -135,6 +143,27 @@ main{
 .copyrigth-mention{
   width: 100%;
   color: #ffffff;
+  font-size: 12px;
+}
+
+h1{
+  text-align: center;
+  color: darkcyan;
+  font-size: 22px;
+}
+
+
+@media (max-width: 767px){
+  h1{
+    font-size: 18px;
+  }
+}
+.line{
+  background-color: #32be3f;
+  height: 0.125rem;
+  margin: 2rem auto;
+  width: 70%;
+  display: block;
 }
 
 #main {

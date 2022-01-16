@@ -14,8 +14,6 @@ class EmployeService {
    * @returns DATA EMPLOYE
    */
   addEmploye(state, dataForm) {
-    console.log('dataForm',dataForm)
-    console.log('state',state)
 
     let employes = state.employes.filter((employe) => {
       if(employe.firstname.toLowerCase().indexOf(dataForm.firstname.toLowerCase()) !== -1 
@@ -25,7 +23,7 @@ class EmployeService {
         return false;
       }         
     });
-    console.log("employes tmp",employes)
+
     if(employes.length > 0){
       return Promise.reject(new Error('Le salarié existe déjà.'));
     }else{

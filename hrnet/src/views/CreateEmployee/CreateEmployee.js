@@ -1,6 +1,11 @@
 import Form from "../../components/Form/Form";
+import PropTypes from 'prop-types';
+/**
+ * @function CreateEmployee
+ * @param {object} props styles data
+ * @returns jsx form
+ */
 const CreateEmployee = (props) => {
-    console.log(props)
     return(
         <main id="main" style={{marginLeft:props.style.main}}>
             <div className="container" >
@@ -9,5 +14,7 @@ const CreateEmployee = (props) => {
         </main>
     )
 }
-
+CreateEmployee.propTypes = {
+    style : PropTypes.object.isRequired,
+};
 export default CreateEmployee;
