@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import '../../styles/form/form.css';
 import DatePickerView from '../Date/Date';
 import SelectView from '../Select/Select';
+import Input from '../Input/Input';
 import { states, dept } from '../../data/data';
 import { addEmploye } from '../../redux/actions/employe';
 import { connect } from "react-redux";
@@ -36,15 +37,6 @@ const Form = (props) => {
     const { showModal, Toggle } = useModal();
 
     //const navigate = useNavigate();
-
-    /**
-     * 
-     * @param {event} e event
-     * Set data form on state form 
-     */
-    const onChangeInput = e => {
-        setFormData({...formData, [e.target.id]: e.target.value});
-    }
     
     /**
      * 
@@ -82,11 +74,11 @@ const Form = (props) => {
                 <div className="row">
                     <div className="col">
                         <label htmlFor="firstname">First Name</label>
-                        <input type="text" required className="form-control" id="firstname" onChange={(e) => onChangeInput(e)} placeholder="First name"/>
+                        <Input inputType="text" isRequired={true} inputClass="form-control" inputName="firstname" setNewEmployee={setFormData} inputPlaceHolder="First name"/>
                     </div>
                     <div className="col">
                         <label htmlFor="lastname">Last Name</label>
-                        <input type="text" required className="form-control" id="lastname" onChange={(e) => onChangeInput(e)} placeholder="Last name"/>
+                        <Input inputType="text" isRequired={true} inputClass="form-control" inputName="lastname" setNewEmployee={setFormData} inputPlaceHolder="Last name"/>
                     </div>              
                 </div>
                 <div className="row">
@@ -105,11 +97,11 @@ const Form = (props) => {
                 <div className="row">
                     <div className="col">
                         <label htmlFor="street">Street</label>
-                        <input type="text" required className="form-control" id="street" onChange={(e) => onChangeInput(e)} placeholder="Street"/>
+                        <Input inputType="text" isRequired={true} inputClass="form-control" inputName="street" setNewEmployee={setFormData} inputPlaceHolder="Street"/>
                     </div>
                     <div className="col">
                         <label htmlFor="city">City</label>
-                        <input type="text" required className="form-control" id="city" onChange={(e) => onChangeInput(e)} placeholder="City"/>
+                        <Input inputType="text" isRequired={true} inputClass="form-control" inputName="city" setNewEmployee={setFormData} inputPlaceHolder="City"/>
                     </div>              
                 </div>
                 <div className="row">
@@ -119,7 +111,7 @@ const Form = (props) => {
                     </div>
                     <div className="col">
                         <label htmlFor="zipcode">Zip Code</label>
-                        <input type="number" required className="form-control" id="zipcode" onChange={(e) => onChangeInput(e)} placeholder="Zip Code"/>
+                        <Input inputType="number" isRequired={true} inputClass="form-control" inputName="zipcode" setNewEmployee={setFormData} inputPlaceHolder="Zip Code"/>
                     </div>
                 </div>
             </fieldset>  
